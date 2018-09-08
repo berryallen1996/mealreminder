@@ -15,8 +15,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.getSampleData() //Sample data URL for testing purpose.
-//        self.getJsonFromUrl() //Server URL.
+//        self.getSampleData() //Sample data URL for testing purpose.
+        self.getJsonFromUrl() //Server URL.
     }
     
     func getJsonFromUrl(){
@@ -56,13 +56,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     temp.setObject(food, forKey: "food" as NSCopying)
                     temp.setObject(mealDateTime, forKey: "meal_time" as NSCopying)
                     self.dietData.add(temp)
-
                 }
             }
             today = tomorrow!
         }
         self.toScheduleNotification()
-//        print(self.dietData)
     }
     
     func toScheduleNotification(){
@@ -75,7 +73,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let meal_time = dateFormatter.date(from: ((self.dietData.object(at: i) as! NSDictionary).object(forKey: "meal_time") as! String))
             let food = (self.dietData.object(at: i) as! NSDictionary).object(forKey: "food") as! String
             let reminderTime = Calendar.current.date(byAdding: .minute, value: -5, to: meal_time!)
-            debugPrint("===reminder Time \(reminderTime)")
             let delegate = UIApplication.shared.delegate as? AppDelegate
             
             delegate?.scheduleNotification(at: reminderTime! , count: "\(i)", food: food)
@@ -83,33 +80,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tableView.reloadData()
     }
     
-    @IBAction func datePickerDateChanged(_ sender: UIDatePicker) {
-      
-        let selectedDate = sender.date
-        for i in 0..<timeArr.count{
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = Locale(identifier: "en_US")
-            dateFormatter.timeZone = TimeZone.current
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:SS"
-            
-            let dateString = dateFormatter.string(from: selectedDate)
-            debugPrint("===date \(dateString)")
-            let date = dateFormatter.date(from: timeArr[i])
-            debugPrint("===Selected date \(date)")
-            let delegate = UIApplication.shared.delegate as? AppDelegate
-            delegate?.scheduleNotification(at: date! , count: "\(i)", food: "self.foodName")
-        }
+//    @IBAction func datePickerDateChanged(_ sender: UIDatePicker) {
+//
+//        let selectedDate = sender.date
+//        for i in 0..<timeArr.count{
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.locale = Locale(identifier: "en_US")
+//            dateFormatter.timeZone = TimeZone.current
+//            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:SS"
+//
+//            let dateString = dateFormatter.string(from: selectedDate)
+//            debugPrint("===date \(dateString)")
+//            let date = dateFormatter.date(from: timeArr[i])
+//            debugPrint("===Selected date \(date)")
+//            let delegate = UIApplication.shared.delegate as? AppDelegate
+//            delegate?.scheduleNotification(at: date! , count: "\(i)", food: "self.foodName")
+//        }
+//
+//    }
 
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
+    //This function is for test purpose.
     func getSampleData(){
-        let jsonString = "{\"diet_duration\": 20, \"week_diet_data\": {\"saturday\": [{\"food\": \"scramblled eggs\", \"meal_time\": \"13:05\"}, {\"food\": \"Burrito bowls\", \"meal_time\": \"13:15\"}, {\"food\": \"Evening snacks\", \"meal_time\": \"13:30\"}, {\"food\": \"North Indian thali\", \"meal_time\": \"13:50\"}], \"wednesday\": [{\"food\": \"Sprouts\", \"meal_time\": \"07:00\"}, {\"food\": \"Bread lintils and Rice\", \"meal_time\": \"16:00\"}, {\"food\": \"Soup ,Rice and Chicken\", \"meal_time\": \"21:00\"}], \"monday\": [{\"food\": \"Warm honey and water\", \"meal_time\": \"07:00\"}, {\"food\": \"proper thali\", \"meal_time\": \"15:00\"}]}}"
+        let jsonString = "{\"diet_duration\": 20, \"week_diet_data\": {\"saturday\": [{\"food\": \"scramblled eggs\", \"meal_time\": \"16:10\"}, {\"food\": \"Burrito bowls\", \"meal_time\": \"16:20\"}, {\"food\": \"Evening snacks\", \"meal_time\": \"16:30\"}, {\"food\": \"North Indian thali\", \"meal_time\": \"16:40\"}], \"wednesday\": [{\"food\": \"Sprouts\", \"meal_time\": \"07:00\"}, {\"food\": \"Bread lintils and Rice\", \"meal_time\": \"16:00\"}, {\"food\": \"Soup ,Rice and Chicken\", \"meal_time\": \"21:00\"}], \"monday\": [{\"food\": \"Warm honey and water\", \"meal_time\": \"07:00\"}, {\"food\": \"proper thali\", \"meal_time\": \"15:00\"}]}}"
     
         let jsonData = jsonString.data(using: .utf8)
         let dictionary = try? JSONSerialization.jsonObject(with: jsonData!, options: .mutableLeaves)
@@ -141,22 +138,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         let foodNameLabel = cell.viewWithTag(1) as! UILabel
         let mealTimeLbl = cell.viewWithTag(2) as! UILabel
-        let borderLbl = cell.viewWithTag(3) as! UILabel
-        let imageView = cell.viewWithTag(4) as! UIImageView
-        let bgView = cell.viewWithTag(5)
-        
-        let mealDateTime = self.getDateFromString(dateString: "\(results.object(forKey: "meal_time")!)", fromDateString: "yyyy-MM-dd HH:mm:SS")
-        let currentDate = self.getDateFromString(dateString: self.getCurrentdate(), fromDateString: "yyyy-MM-dd HH:mm:SS")
-        let timeDiff = self.timeDifferenceInMinutes(firstDate: currentDate, secondDate: mealDateTime)
-        if  Int(timeDiff)! < 1{
-            borderLbl.isHidden = false
-            bgView?.backgroundColor = self.colorWithHexString("e74c3c")
-            imageView.image = #imageLiteral(resourceName: "cross")
-        }else{
-            borderLbl.isHidden = true
-            bgView?.backgroundColor = self.colorWithHexString("05C2C0")
-            imageView.image = #imageLiteral(resourceName: "check")
-        }
         
         let mealDateTimeString = self.getDateStringFromDateString(date: "\(results.object(forKey: "meal_time")!)", fromDateString: "yyyy-MM-dd HH:mm:SS", toDateString: "dd MMM, yyyy hh:mm a")
         
@@ -188,31 +169,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let getDate = dateFormatter.date(from: date)
         dateFormatter.dateFormat = toDateString
         return dateFormatter.string(from: getDate!)
-    }
-    
-    func timeDifferenceInMinutes(firstDate:Date,secondDate:Date) -> String
-    {
-        
-        let dateformatter = DateFormatter()
-        dateformatter.locale = Locale(identifier: "en_US")
-        
-        dateformatter.dateFormat = "yyyy-MM-dd HH:mm:SS"
-        
-        let datecomponents = NSCalendar.current.dateComponents([.minute], from: firstDate, to: secondDate)
-        
-        let minute = datecomponents.minute!
-        
-        return "\(minute)"
-    }
-    
-    func getDateFromString(dateString:String,fromDateString:String) -> Date{
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = fromDateString
-        let date = dateFormatter.date(from:dateString)!
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.year, .month, .day, .hour], from: date)
-        let finalDate = calendar.date(from:components)
-        return finalDate!
     }
     
     func getDateStringFromDate(date: Date, toDateString: String) -> String
@@ -260,6 +216,3 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
 }
-
-
-

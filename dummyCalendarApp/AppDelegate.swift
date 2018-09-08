@@ -22,8 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let category = UNNotificationCategory(identifier: "remindLaterCategory", actions: [action1], intentIdentifiers: [], options: [])
         UNUserNotificationCenter.current().setNotificationCategories([category])
         
-       
-       
         // Override point for customization after application launch.
         return true
     }
@@ -62,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         content.sound = UNNotificationSound.default()
         content.categoryIdentifier = "remindLaterCategory"
         
-       UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().delegate = self
         
         let request = UNNotificationRequest(identifier: "textNotification\(count)", content: content, trigger: trigger)
        // UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
@@ -83,7 +81,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             let calendar = Calendar(identifier: .gregorian)
             let newComponent = calendar.dateComponents(in: .current, from: newDate)
             let min = newComponent.minute
-            scheduleNotification(at: newDate, count: "\(min! * 2)", food: "Please take your meal.")
+            scheduleNotification(at: newDate, count: "\(min! * 2)", food: "your meal.")
         }
     }
 }

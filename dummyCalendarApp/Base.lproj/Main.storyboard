@@ -50,20 +50,8 @@
                                     <constraint firstAttribute="trailing" secondItem="K7L-jY-4yF" secondAttribute="trailing" constant="15" id="yK1-HK-XTq"/>
                                 </constraints>
                             </view>
-                            <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="1i6-Lv-tDN">
-                                <rect key="frame" x="0.0" y="657" width="375" height="10"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="10" id="Efn-pV-aqg"/>
-                                </constraints>
-                                <date key="date" timeIntervalSinceReferenceDate="557906699.67124403">
-                                    <!--2018-09-06 06:04:59 +0000-->
-                                </date>
-                                <connections>
-                                    <action selector="datePickerDateChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="dDe-4l-5RB"/>
-                                </connections>
-                            </datePicker>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A7i-xI-lHq">
-                                <rect key="frame" x="0.0" y="80" width="375" height="567"/>
+                                <rect key="frame" x="0.0" y="80" width="375" height="577"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="foodItemCell" rowHeight="90" id="gVL-gJ-dQ3">
@@ -94,17 +82,7 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwf-wQ-fyT">
-                                                            <rect key="frame" x="270" y="59" width="70" height="2"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="2" id="G6K-cJ-Hkt"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="D8F-Ir-zbc">
+                                                        <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="D8F-Ir-zbc">
                                                             <rect key="frame" x="10" y="5" width="70" height="70"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="70" id="Wpm-q0-K6F"/>
@@ -117,12 +95,9 @@
                                                         <constraint firstItem="SQ2-z1-3Z8" firstAttribute="top" secondItem="pca-S8-CTg" secondAttribute="bottom" constant="10" id="CP3-hO-XKH"/>
                                                         <constraint firstItem="D8F-Ir-zbc" firstAttribute="leading" secondItem="fOR-T0-g3s" secondAttribute="leading" constant="10" id="PwR-2I-Rkb"/>
                                                         <constraint firstItem="D8F-Ir-zbc" firstAttribute="centerY" secondItem="fOR-T0-g3s" secondAttribute="centerY" id="QD4-gp-Qn2"/>
-                                                        <constraint firstItem="mwf-wQ-fyT" firstAttribute="trailing" secondItem="SQ2-z1-3Z8" secondAttribute="trailing" id="av9-cC-mC0"/>
                                                         <constraint firstAttribute="trailing" secondItem="SQ2-z1-3Z8" secondAttribute="trailing" constant="15" id="b8E-A1-6n7"/>
                                                         <constraint firstAttribute="trailing" secondItem="pca-S8-CTg" secondAttribute="trailing" constant="15" id="eSo-ye-cUA"/>
                                                         <constraint firstAttribute="bottom" secondItem="SQ2-z1-3Z8" secondAttribute="bottom" constant="4.5" id="hF7-BT-jrn"/>
-                                                        <constraint firstItem="mwf-wQ-fyT" firstAttribute="width" secondItem="SQ2-z1-3Z8" secondAttribute="width" id="jqh-DQ-Qiu"/>
-                                                        <constraint firstItem="mwf-wQ-fyT" firstAttribute="centerY" secondItem="SQ2-z1-3Z8" secondAttribute="centerY" id="lTa-UG-JLy"/>
                                                         <constraint firstItem="pca-S8-CTg" firstAttribute="top" secondItem="fOR-T0-g3s" secondAttribute="top" constant="5" id="sNp-kU-1U8"/>
                                                     </constraints>
                                                 </view>
@@ -144,12 +119,9 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="1i6-Lv-tDN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="J6n-wd-yOo"/>
-                            <constraint firstItem="1i6-Lv-tDN" firstAttribute="top" secondItem="A7i-xI-lHq" secondAttribute="bottom" constant="10" id="LSJ-cF-Z3m"/>
-                            <constraint firstItem="1i6-Lv-tDN" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="SIW-yk-0yo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="A7i-xI-lHq" secondAttribute="bottom" constant="10" id="RQo-gR-iiS"/>
                             <constraint firstItem="A7i-xI-lHq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Vpk-pw-Ryc"/>
                             <constraint firstItem="dk1-QI-g4j" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Zvh-kQ-zTC"/>
-                            <constraint firstItem="1i6-Lv-tDN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ffx-bz-s7g"/>
                             <constraint firstItem="dk1-QI-g4j" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="kY3-tl-nW9"/>
                             <constraint firstItem="dk1-QI-g4j" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mKp-zu-HIG"/>
                             <constraint firstItem="A7i-xI-lHq" firstAttribute="top" secondItem="dk1-QI-g4j" secondAttribute="bottom" id="ua5-y5-8md"/>
@@ -167,7 +139,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="check" width="64" height="64"/>
+        <image name="food" width="32" height="32"/>
         <image name="reminder" width="33" height="33"/>
     </resources>
 </document>
